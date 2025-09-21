@@ -40,3 +40,10 @@ Create a .gitignore file for the project that excludes:
 - iOS/Xcode build artifacts and user data
 - OS-specific files
 - Claude-code specific files
+
+Add these features:
+- Users can only vote once per feature
+- Vote count updates automatically
+- Include pagination for feature list
+- Add error handling for duplicate votes
+- Input validation for feature creation
