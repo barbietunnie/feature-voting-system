@@ -12,9 +12,31 @@ class UserAuthViewModel: ObservableObject {
     var sessionManager: UserSessionManager?
 
     var isFormValid: Bool {
-        !username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-        !email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-        isValidEmail(email)
+        let trimmedUsername = username.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        return trimmedUsername.count >= 2 &&
+               trimmedUsername.count <= 50 &&
+               !trimmedEmail.isEmpty &&
+               isValidEmail(trimmedEmail)
+    }
+
+    var usernameValidationMessage: String? {
+        let trimmed = username.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !username.isEmpty && trimmed.count < 2 {
+            return "Username must be at least 2 characters"
+        }
+        if trimmed.count > 50 {
+            return "Username must not exceed 50 characters"
+        }
+        return nil
+    }
+
+    var emailValidationMessage: String? {
+        if !email.isEmpty && !isValidEmail(email) {
+            return "Please enter a valid email address"
+        }
+        return nil
     }
 
     func loadExistingUsers() async {
@@ -25,7 +47,11 @@ class UserAuthViewModel: ObservableObject {
             let users = try await apiService.fetchUsers()
             existingUsers = users
         } catch {
-            errorMessage = "Failed to load users: \(error.localizedDescription)"
+            if let apiError = error as? APIError {
+                errorMessage = apiError.userFriendlyMessage
+            } else {
+                errorMessage = "Failed to load users: \(error.localizedDescription)"
+            }
             if AppConfig.isDebugMode {
                 print("Error loading users: \(error)")
             }
@@ -35,6 +61,16 @@ class UserAuthViewModel: ObservableObject {
     }
 
     func createNewUser() async -> Bool {
+        if let usernameError = usernameValidationMessage {
+            errorMessage = usernameError
+            return false
+        }
+
+        if let emailError = emailValidationMessage {
+            errorMessage = emailError
+            return false
+        }
+
         guard isFormValid else {
             errorMessage = "Please fill in all fields with valid information"
             return false
@@ -53,7 +89,11 @@ class UserAuthViewModel: ObservableObject {
             sessionManager?.login(user: createdUser)
             return true
         } catch {
-            errorMessage = "Failed to create user: \(error.localizedDescription)"
+            if let apiError = error as? APIError {
+                errorMessage = apiError.userFriendlyMessage
+            } else {
+                errorMessage = "Failed to create user: \(error.localizedDescription)"
+            }
             if AppConfig.isDebugMode {
                 print("Error creating user: \(error)")
             }

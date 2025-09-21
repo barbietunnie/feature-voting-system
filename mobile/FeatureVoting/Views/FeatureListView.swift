@@ -221,26 +221,72 @@ struct LoadMoreView: View {
 struct ErrorBanner: View {
     let message: String
     let onDismiss: () -> Void
+    let errorType: ErrorType
+
+    enum ErrorType {
+        case warning
+        case error
+        case info
+
+        var color: Color {
+            switch self {
+            case .warning:
+                return .orange
+            case .error:
+                return .red
+            case .info:
+                return .blue
+            }
+        }
+
+        var icon: String {
+            switch self {
+            case .warning:
+                return "exclamationmark.triangle.fill"
+            case .error:
+                return "xmark.circle.fill"
+            case .info:
+                return "info.circle.fill"
+            }
+        }
+    }
+
+    init(message: String, type: ErrorType = .error, onDismiss: @escaping () -> Void) {
+        self.message = message
+        self.errorType = type
+        self.onDismiss = onDismiss
+    }
 
     var body: some View {
-        HStack {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundColor(.orange)
+        HStack(spacing: 12) {
+            Image(systemName: errorType.icon)
+                .foregroundColor(errorType.color)
+                .font(.system(size: 16, weight: .medium))
 
             Text(message)
-                .font(.caption)
+                .font(.subheadline)
                 .foregroundColor(.primary)
+                .multilineTextAlignment(.leading)
 
             Spacer()
 
-            Button("Dismiss") {
-                onDismiss()
+            Button(action: onDismiss) {
+                Image(systemName: "xmark")
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(.secondary)
             }
-            .font(.caption)
         }
-        .padding()
-        .background(Color.orange.opacity(0.1))
-        .border(Color.orange.opacity(0.3), width: 1)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(errorType.color.opacity(0.1))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(errorType.color.opacity(0.3), lineWidth: 1)
+                )
+        )
+        .padding(.horizontal, 16)
     }
 }
 

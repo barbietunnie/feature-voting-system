@@ -54,3 +54,28 @@ Create SwiftUI iOS app with:
 - Environment configuration for API base URL
 
 Ensure you build the project after creation to ensure it works as expected, without any errors.
+
+Build these iOS screens:
+1. Login/User Selection screen
+2. Feature List (with vote counts, sorted by popularity)
+3. Create Feature form
+4. Tap to upvote/remove vote with visual feedback
+
+Use MVVM architecture pattern.
+
+Create tests for:
+- Backend: pytest for API endpoints and vote logic
+- Database: test vote constraints and counting
+- Include edge cases: duplicate votes, missing users, invalid data
+
+Improve error handling:
+- API: proper HTTP status codes and error messages
+- iOS: user-friendly error alerts
+- Handle network failures gracefully
+- Validate all inputs
+
+Create:
+- README.md with setup instructions for backend and iOS
+- API documentation (endpoints, request/response examples)
+- Database schema diagram
+- Environment setup guide (.env configuration)

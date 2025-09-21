@@ -127,10 +127,14 @@ struct CreateUserView: View {
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
 
-                        if !viewModel.username.isEmpty {
-                            Text("Username: 1+ characters")
+                        if let validationMessage = viewModel.usernameValidationMessage {
+                            Text(validationMessage)
                                 .font(.caption)
-                                .foregroundColor(viewModel.username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? .red : .green)
+                                .foregroundColor(.red)
+                        } else if !viewModel.username.isEmpty {
+                            Text("✓ Username looks good")
+                                .font(.caption)
+                                .foregroundColor(.green)
                         }
                     }
 
@@ -141,10 +145,14 @@ struct CreateUserView: View {
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
 
-                        if !viewModel.email.isEmpty {
-                            Text("Email: Valid email address")
+                        if let validationMessage = viewModel.emailValidationMessage {
+                            Text(validationMessage)
                                 .font(.caption)
-                                .foregroundColor(isValidEmail(viewModel.email) ? .green : .red)
+                                .foregroundColor(.red)
+                        } else if !viewModel.email.isEmpty {
+                            Text("✓ Email looks good")
+                                .font(.caption)
+                                .foregroundColor(.green)
                         }
                     }
                 }

@@ -44,7 +44,11 @@ class FeatureViewModel: ObservableObject {
                 currentPage += 1
             }
         } catch {
-            errorMessage = "Failed to load features: \(error.localizedDescription)"
+            if let apiError = error as? APIError {
+                errorMessage = apiError.userFriendlyMessage
+            } else {
+                errorMessage = "Failed to load features: \(error.localizedDescription)"
+            }
             if AppConfig.isDebugMode {
                 print("Error loading features: \(error)")
             }
@@ -92,7 +96,11 @@ class FeatureViewModel: ObservableObject {
             features.insert(createdFeature, at: 0)
             return true
         } catch {
-            errorMessage = "Failed to create feature: \(error.localizedDescription)"
+            if let apiError = error as? APIError {
+                errorMessage = apiError.userFriendlyMessage
+            } else {
+                errorMessage = "Failed to create feature: \(error.localizedDescription)"
+            }
             if AppConfig.isDebugMode {
                 print("Error creating feature: \(error)")
             }
@@ -129,10 +137,12 @@ class FeatureViewModel: ObservableObject {
                 // Re-sort the features since vote count changed
                 sortFeatures()
             }
-        } catch APIError.badRequest {
-            errorMessage = "You have already voted for this feature"
         } catch {
-            errorMessage = "Failed to vote: \(error.localizedDescription)"
+            if let apiError = error as? APIError {
+                errorMessage = apiError.userFriendlyMessage
+            } else {
+                errorMessage = "Failed to vote: \(error.localizedDescription)"
+            }
             if AppConfig.isDebugMode {
                 print("Error voting for feature: \(error)")
             }
@@ -170,11 +180,15 @@ class FeatureViewModel: ObservableObject {
                 // Re-sort the features since vote count changed
                 sortFeatures()
             }
-        } catch APIError.notFound {
-            errorMessage = "Vote not found"
-            votedFeatures.remove(feature.id)
         } catch {
-            errorMessage = "Failed to remove vote: \(error.localizedDescription)"
+            if let apiError = error as? APIError {
+                errorMessage = apiError.userFriendlyMessage
+                if case .notFound = apiError {
+                    votedFeatures.remove(feature.id)
+                }
+            } else {
+                errorMessage = "Failed to remove vote: \(error.localizedDescription)"
+            }
             if AppConfig.isDebugMode {
                 print("Error removing vote: \(error)")
             }
