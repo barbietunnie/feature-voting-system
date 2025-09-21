@@ -47,3 +47,10 @@ Add these features:
 - Include pagination for feature list
 - Add error handling for duplicate votes
 - Input validation for feature creation
+
+Create SwiftUI iOS app with:
+- Network layer for API calls
+- Models matching backend schema
+- Environment configuration for API base URL
+
+Ensure you build the project after creation to ensure it works as expected, without any errors.
