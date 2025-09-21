@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FeatureListView: View {
     @StateObject private var viewModel = FeatureViewModel()
+    @EnvironmentObject var sessionManager: UserSessionManager
     @State private var showingAddFeature = false
 
     var body: some View {
@@ -18,6 +19,9 @@ struct FeatureListView: View {
                     List {
                         ForEach(viewModel.features) { feature in
                             FeatureRowView(feature: feature, viewModel: viewModel)
+                                .listRowInsets(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.clear)
                         }
 
                         if viewModel.hasMorePages {
@@ -26,8 +30,12 @@ struct FeatureListView: View {
                                     await viewModel.loadMoreFeatures()
                                 }
                             }
+                            .listRowInsets(EdgeInsets())
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
                         }
                     }
+                    .listStyle(PlainListStyle())
                     .refreshable {
                         await viewModel.refreshFeatures()
                     }
@@ -41,6 +49,19 @@ struct FeatureListView: View {
             }
             .navigationTitle("Features")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Menu {
+                        if let user = sessionManager.currentUser {
+                            Text("Logged in as \(user.username)")
+                        }
+                        Button("Logout", role: .destructive) {
+                            sessionManager.logout()
+                        }
+                    } label: {
+                        Image(systemName: "person.circle")
+                    }
+                }
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingAddFeature = true
@@ -62,6 +83,7 @@ struct FeatureListView: View {
 struct FeatureRowView: View {
     let feature: Feature
     let viewModel: FeatureViewModel
+    @State private var isPressed = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -77,39 +99,70 @@ struct FeatureRowView: View {
             }
 
             HStack {
-                Text("\(feature.voteCount) votes")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                HStack(spacing: 4) {
+                    Text("\(feature.voteCount)")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .foregroundColor(feature.voteCount > 0 ? .blue : .secondary)
+
+                    Text(feature.voteCount == 1 ? "vote" : "votes")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+
+                    if feature.voteCount > 10 {
+                        Image(systemName: "flame.fill")
+                            .font(.caption)
+                            .foregroundColor(.orange)
+                    } else if feature.voteCount > 5 {
+                        Image(systemName: "star.fill")
+                            .font(.caption)
+                            .foregroundColor(.yellow)
+                    }
+                }
 
                 Spacer()
 
-                HStack(spacing: 8) {
-                    if viewModel.votingInProgress.contains(feature.id) {
-                        ProgressView()
-                            .scaleEffect(0.8)
-                    } else if viewModel.votedFeatures.contains(feature.id) {
-                        Button(action: {
-                            Task {
-                                await viewModel.removeVote(from: feature)
-                            }
-                        }) {
-                            Image(systemName: "heart.fill")
-                                .foregroundColor(.red)
+                VoteButton(
+                    feature: feature,
+                    isVoted: viewModel.votedFeatures.contains(feature.id),
+                    isLoading: viewModel.votingInProgress.contains(feature.id),
+                    onVote: {
+                        Task {
+                            await viewModel.voteForFeature(feature)
                         }
-                    } else {
-                        Button(action: {
-                            Task {
-                                await viewModel.voteForFeature(feature)
-                            }
-                        }) {
-                            Image(systemName: "heart")
-                                .foregroundColor(.gray)
+                    },
+                    onRemoveVote: {
+                        Task {
+                            await viewModel.removeVote(from: feature)
                         }
                     }
+                )
+            }
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 4)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color(.systemBackground))
+                .shadow(
+                    color: .black.opacity(0.05),
+                    radius: isPressed ? 1 : 2,
+                    x: 0,
+                    y: isPressed ? 1 : 2
+                )
+        )
+        .scaleEffect(isPressed ? 0.98 : 1.0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.8), value: isPressed)
+        .onTapGesture {
+            withAnimation(.spring(response: 0.2, dampingFraction: 0.8)) {
+                isPressed = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                    isPressed = false
                 }
             }
         }
-        .padding(.vertical, 4)
     }
 }
 
@@ -240,6 +293,8 @@ struct AddFeatureView: View {
                         }
                     }
                     .disabled(isSubmitting || !isValid)
+                    .opacity(isSubmitting || !isValid ? 0.6 : 1.0)
+                    .animation(.easeInOut(duration: 0.2), value: isSubmitting)
                 }
             }
         }
@@ -261,12 +316,27 @@ struct AddFeatureView: View {
     private func submitFeature() async {
         isSubmitting = true
 
+        // Haptic feedback for submission
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.impactOccurred()
+
         let success = await viewModel.createFeature(title: title, description: description)
 
         isSubmitting = false
 
         if success {
-            presentationMode.wrappedValue.dismiss()
+            // Success haptic feedback
+            let successFeedback = UINotificationFeedbackGenerator()
+            successFeedback.notificationOccurred(.success)
+
+            // Dismiss with slight delay for better UX
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                presentationMode.wrappedValue.dismiss()
+            }
+        } else {
+            // Error haptic feedback
+            let errorFeedback = UINotificationFeedbackGenerator()
+            errorFeedback.notificationOccurred(.error)
         }
     }
 }

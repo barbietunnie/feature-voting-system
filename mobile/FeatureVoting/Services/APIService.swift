@@ -5,6 +5,7 @@ class APIService: ObservableObject {
     private let session: URLSession
     private let jsonDecoder: JSONDecoder
     private let jsonEncoder: JSONEncoder
+    private let sessionManager = UserSessionManager()
 
     init() {
         let config = URLSessionConfiguration.default
@@ -44,7 +45,7 @@ class APIService: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(AppConfig.defaultUserId)", forHTTPHeaderField: "X-User-ID")
+        request.setValue("\(sessionManager.currentUserId)", forHTTPHeaderField: "X-User-ID")
         request.httpBody = try jsonEncoder.encode(feature)
 
         let (data, response) = try await session.data(for: request)
@@ -75,7 +76,7 @@ class APIService: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(AppConfig.defaultUserId)", forHTTPHeaderField: "X-User-ID")
+        request.setValue("\(sessionManager.currentUserId)", forHTTPHeaderField: "X-User-ID")
 
         let (data, response) = try await session.data(for: request)
         try validateResponse(response)
@@ -90,7 +91,7 @@ class APIService: ObservableObject {
 
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-        request.setValue("\(AppConfig.defaultUserId)", forHTTPHeaderField: "X-User-ID")
+        request.setValue("\(sessionManager.currentUserId)", forHTTPHeaderField: "X-User-ID")
 
         let (data, response) = try await session.data(for: request)
         try validateResponse(response)
@@ -99,6 +100,18 @@ class APIService: ObservableObject {
     }
 
     // MARK: - Users
+
+    func fetchUsers() async throws -> [User] {
+        guard let url = URL(string: "\(baseURL)/users") else {
+            throw APIError.invalidURL
+        }
+
+        let request = URLRequest(url: url)
+        let (data, response) = try await session.data(for: request)
+        try validateResponse(response)
+
+        return try jsonDecoder.decode([User].self, from: data)
+    }
 
     func createUser(_ user: UserCreate) async throws -> User {
         guard let url = URL(string: "\(baseURL)/users") else {

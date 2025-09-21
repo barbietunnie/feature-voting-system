@@ -7,35 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A2B3C4D5E6F7890 /* FeatureVotingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7891 /* FeatureVotingApp.swift */; };
-		1A2B3C4D5E6F7892 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7893 /* ContentView.swift */; };
-		1A2B3C4D5E6F7894 /* FeatureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7895 /* FeatureListView.swift */; };
-		1A2B3C4D5E6F7896 /* FeatureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7897 /* FeatureViewModel.swift */; };
-		1A2B3C4D5E6F7898 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7899 /* APIService.swift */; };
-		1A2B3C4D5E6F789A /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F789B /* Feature.swift */; };
-		1A2B3C4D5E6F789C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F789D /* User.swift */; };
-		1A2B3C4D5E6F789E /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F789F /* Vote.swift */; };
-		1A2B3C4D5E6F78A0 /* PaginatedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F78A1 /* PaginatedResponse.swift */; };
-		1A2B3C4D5E6F78A2 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F78A3 /* Environment.swift */; };
+		A1000001 /* FeatureVotingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002 /* FeatureVotingApp.swift */; };
+		A1000003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004 /* ContentView.swift */; };
+		A1000005 /* FeatureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000006 /* FeatureListView.swift */; };
+		A1000007 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000008 /* LoginView.swift */; };
+		A1000009 /* VoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000010 /* VoteButton.swift */; };
+		A1000011 /* FeatureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000012 /* FeatureViewModel.swift */; };
+		A1000013 /* UserAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000014 /* UserAuthViewModel.swift */; };
+		A1000015 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000016 /* Feature.swift */; };
+		A1000017 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000018 /* User.swift */; };
+		A1000019 /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000020 /* Vote.swift */; };
+		A1000021 /* PaginatedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000022 /* PaginatedResponse.swift */; };
+		A1000023 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000024 /* APIService.swift */; };
+		A1000025 /* UserSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000026 /* UserSessionManager.swift */; };
+		A1000027 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000028 /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A2B3C4D5E6F7888 /* FeatureVoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeatureVoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A2B3C4D5E6F7891 /* FeatureVotingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureVotingApp.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F7893 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F7895 /* FeatureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureListView.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F7897 /* FeatureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewModel.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F7899 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F789B /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F789D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F789F /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F78A1 /* PaginatedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedResponse.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F78A3 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F78A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1000029 /* FeatureVoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeatureVoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1000002 /* FeatureVotingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureVotingApp.swift; sourceTree = "<group>"; };
+		A1000004 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1000006 /* FeatureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureListView.swift; sourceTree = "<group>"; };
+		A1000008 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A1000010 /* VoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
+		A1000012 /* FeatureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewModel.swift; sourceTree = "<group>"; };
+		A1000014 /* UserAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthViewModel.swift; sourceTree = "<group>"; };
+		A1000016 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		A1000018 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A1000020 /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
+		A1000022 /* PaginatedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedResponse.swift; sourceTree = "<group>"; };
+		A1000024 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		A1000026 /* UserSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManager.swift; sourceTree = "<group>"; };
+		A1000028 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1A2B3C4D5E6F7885 /* Frameworks */ = {
+		A1000030 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,95 +52,101 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A2B3C4D5E6F787F /* Project object */ = {
+		A1000031 /* MainGroup */ = {
 			isa = PBXGroup;
 			children = (
-				1A2B3C4D5E6F788A /* FeatureVoting */,
-				1A2B3C4D5E6F7889 /* Products */,
+				A1000032 /* FeatureVoting */,
+				A1000033 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1A2B3C4D5E6F7889 /* Products */ = {
+		A1000033 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1A2B3C4D5E6F7888 /* FeatureVoting.app */,
+				A1000029 /* FeatureVoting.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1A2B3C4D5E6F788A /* FeatureVoting */ = {
+		A1000032 /* FeatureVoting */ = {
 			isa = PBXGroup;
 			children = (
-				1A2B3C4D5E6F7891 /* FeatureVotingApp.swift */,
-				1A2B3C4D5E6F7893 /* ContentView.swift */,
-				1A2B3C4D5E6F788B /* Views */,
-				1A2B3C4D5E6F788C /* ViewModels */,
-				1A2B3C4D5E6F788D /* Models */,
-				1A2B3C4D5E6F788E /* Services */,
-				1A2B3C4D5E6F788F /* Config */,
-				1A2B3C4D5E6F78A5 /* Info.plist */,
+				A1000002 /* FeatureVotingApp.swift */,
+				A1000004 /* ContentView.swift */,
+				A1000034 /* Views */,
+				A1000035 /* ViewModels */,
+				A1000036 /* Models */,
+				A1000037 /* Services */,
+				A1000038 /* Config */,
 			);
 			path = FeatureVoting;
 			sourceTree = "<group>";
 		};
-		1A2B3C4D5E6F788B /* Views */ = {
+		A1000034 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1A2B3C4D5E6F7895 /* FeatureListView.swift */,
+				A1000006 /* FeatureListView.swift */,
+				A1000008 /* LoginView.swift */,
+				A1000039 /* Components */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
-		1A2B3C4D5E6F788C /* ViewModels */ = {
+		A1000039 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				1A2B3C4D5E6F7897 /* FeatureViewModel.swift */,
+				A1000010 /* VoteButton.swift */,
 			);
-			name = ViewModels;
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A1000035 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A1000012 /* FeatureViewModel.swift */,
+				A1000014 /* UserAuthViewModel.swift */,
+			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		1A2B3C4D5E6F788D /* Models */ = {
+		A1000036 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1A2B3C4D5E6F789B /* Feature.swift */,
-				1A2B3C4D5E6F789D /* User.swift */,
-				1A2B3C4D5E6F789F /* Vote.swift */,
-				1A2B3C4D5E6F78A1 /* PaginatedResponse.swift */,
+				A1000016 /* Feature.swift */,
+				A1000018 /* User.swift */,
+				A1000020 /* Vote.swift */,
+				A1000022 /* PaginatedResponse.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
-		1A2B3C4D5E6F788E /* Services */ = {
+		A1000037 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				1A2B3C4D5E6F7899 /* APIService.swift */,
+				A1000024 /* APIService.swift */,
+				A1000026 /* UserSessionManager.swift */,
 			);
-			name = Services;
 			path = Services;
 			sourceTree = "<group>";
 		};
-		1A2B3C4D5E6F788F /* Config */ = {
+		A1000038 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				1A2B3C4D5E6F78A3 /* Environment.swift */,
+				A1000028 /* Environment.swift */,
 			);
-			name = Config;
 			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1A2B3C4D5E6F7887 /* FeatureVoting */ = {
+		A1000040 /* FeatureVoting */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A2B3C4D5E6F78A6 /* Build configuration list for PBXNativeTarget "FeatureVoting" */;
+			buildConfigurationList = A1000041 /* Build configuration list for PBXNativeTarget "FeatureVoting" */;
 			buildPhases = (
-				1A2B3C4D5E6F7884 /* Sources */,
-				1A2B3C4D5E6F7885 /* Frameworks */,
-				1A2B3C4D5E6F7886 /* Resources */,
+				A1000042 /* Sources */,
+				A1000030 /* Frameworks */,
+				A1000043 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -141,25 +154,25 @@
 			);
 			name = FeatureVoting;
 			productName = FeatureVoting;
-			productReference = 1A2B3C4D5E6F7888 /* FeatureVoting.app */;
+			productReference = A1000029 /* FeatureVoting.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1A2B3C4D5E6F7880 /* Project object */ = {
+		A1000044 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					1A2B3C4D5E6F7887 = {
+					A1000040 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 1A2B3C4D5E6F7883 /* Build configuration list for PBXProject "FeatureVoting" */;
+			buildConfigurationList = A1000045 /* Build configuration list for PBXProject "FeatureVoting" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -167,18 +180,18 @@
 				en,
 				Base,
 			);
-			mainGroup = 1A2B3C4D5E6F787F /* Project object */;
-			productRefGroup = 1A2B3C4D5E6F7889 /* Products */;
+			mainGroup = A1000031 /* MainGroup */;
+			productRefGroup = A1000033 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1A2B3C4D5E6F7887 /* FeatureVoting */,
+				A1000040 /* FeatureVoting */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1A2B3C4D5E6F7886 /* Resources */ = {
+		A1000043 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -188,27 +201,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1A2B3C4D5E6F7884 /* Sources */ = {
+		A1000042 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2B3C4D5E6F7892 /* ContentView.swift in Sources */,
-				1A2B3C4D5E6F7890 /* FeatureVotingApp.swift in Sources */,
-				1A2B3C4D5E6F7894 /* FeatureListView.swift in Sources */,
-				1A2B3C4D5E6F7896 /* FeatureViewModel.swift in Sources */,
-				1A2B3C4D5E6F7898 /* APIService.swift in Sources */,
-				1A2B3C4D5E6F789A /* Feature.swift in Sources */,
-				1A2B3C4D5E6F789C /* User.swift in Sources */,
-				1A2B3C4D5E6F789E /* Vote.swift in Sources */,
-				1A2B3C4D5E6F78A0 /* PaginatedResponse.swift in Sources */,
-				1A2B3C4D5E6F78A2 /* Environment.swift in Sources */,
+				A1000003 /* ContentView.swift in Sources */,
+				A1000001 /* FeatureVotingApp.swift in Sources */,
+				A1000005 /* FeatureListView.swift in Sources */,
+				A1000007 /* LoginView.swift in Sources */,
+				A1000009 /* VoteButton.swift in Sources */,
+				A1000011 /* FeatureViewModel.swift in Sources */,
+				A1000013 /* UserAuthViewModel.swift in Sources */,
+				A1000015 /* Feature.swift in Sources */,
+				A1000017 /* User.swift in Sources */,
+				A1000019 /* Vote.swift in Sources */,
+				A1000021 /* PaginatedResponse.swift in Sources */,
+				A1000023 /* APIService.swift in Sources */,
+				A1000025 /* UserSessionManager.swift in Sources */,
+				A1000027 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1A2B3C4D5E6F78A7 /* Debug */ = {
+		A1000046 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -260,7 +277,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -271,7 +288,7 @@
 			};
 			name = Debug;
 		};
-		1A2B3C4D5E6F78A8 /* Release */ = {
+		A1000047 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -317,7 +334,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -327,7 +344,7 @@
 			};
 			name = Release;
 		};
-		1A2B3C4D5E6F78A9 /* Debug */ = {
+		A1000048 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -336,8 +353,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = FeatureVoting/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -348,7 +364,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.featurevoting;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.FeatureVoting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -356,7 +372,7 @@
 			};
 			name = Debug;
 		};
-		1A2B3C4D5E6F78AA /* Release */ = {
+		A1000049 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -365,8 +381,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = FeatureVoting/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -377,7 +392,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.featurevoting;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.FeatureVoting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -388,25 +403,26 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A2B3C4D5E6F7883 /* Build configuration list for PBXProject "FeatureVoting" */ = {
+		A1000045 /* Build configuration list for PBXProject "FeatureVoting" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A2B3C4D5E6F78A7 /* Debug */,
-				1A2B3C4D5E6F78A8 /* Release */,
+				A1000046 /* Debug */,
+				A1000047 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A2B3C4D5E6F78A6 /* Build configuration list for PBXNativeTarget "FeatureVoting" */ = {
+		A1000041 /* Build configuration list for PBXNativeTarget "FeatureVoting" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A2B3C4D5E6F78A9 /* Debug */,
-				1A2B3C4D5E6F78AA /* Release */,
+				A1000048 /* Debug */,
+				A1000049 /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1A2B3C4D5E6F7880 /* Project object */;
+	rootObject = A1000044 /* Project object */;
 }
