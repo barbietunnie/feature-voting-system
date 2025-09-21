@@ -1,0 +1,42 @@
+For each prompt I give you, write to a file prompts.txt, so I can audit the work.
+
+Create a Feature Voting System with the following structure:
+- Backend: Python/FastAPI
+- Database: PostgreSQL with SQLAlchemy ORM
+- Mobile: iOS (Swift/SwiftUI)
+
+Set up the project structure with:
+- /backend folder for API
+- /mobile folder for iOS app
+- Database schema for: users, features, votes
+- Initial configuration files (requirements.txt, .env.example)
+
+Design and implement PostgreSQL schema with these tables:
+- users: id, username, email, created_at
+- features: id, title, description, author_id, created_at, vote_count
+- votes: id, user_id, feature_id, created_at (unique constraint on user+feature)
+
+Create SQLAlchemy models and Alembic migrations.
+
+Build FastAPI endpoints:
+POST /api/users - Create user
+GET /api/features - List all features (sorted by votes)
+POST /api/features - Create new feature
+POST /api/features/{id}/vote - Upvote a feature
+DELETE /api/features/{id}/vote - Remove vote
+
+Include Pydantic models for request/response validation.
+
+**Note:** Created git repository after completing backend API.
+Initial commit captures database schema and core API endpoints.
+Future commits will be made after each major feature addition.
+
+Create a .gitignore file for the project that excludes:
+
+- Python virtual environments and cache files
+- Database files
+- Environment variables (.env)
+- IDE configurations
+- iOS/Xcode build artifacts and user data
+- OS-specific files
+- Claude-code specific files
