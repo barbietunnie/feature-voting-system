@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThumbsUp, Loader2 } from 'lucide-react';
 import { Button } from './ui/button';
-import { Feature } from '../types';
+import type { Feature } from '../types';
 
 interface VoteButtonProps {
   feature: Feature;

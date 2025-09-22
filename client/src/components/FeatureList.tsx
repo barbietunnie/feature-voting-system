@@ -6,7 +6,7 @@ import VoteButton from './VoteButton';
 import AddFeatureModal from './AddFeatureModal';
 import { useAuth } from '../hooks/useAuth';
 import { useFeatures } from '../hooks/useFeatures';
-import { Feature } from '../types';
+import type { Feature } from '../types';
 
 const FeatureList: React.FC = () => {
   const { user, logout } = useAuth();
@@ -19,7 +19,6 @@ const FeatureList: React.FC = () => {
     votedFeatures,
     votingInProgress,
     loadMoreFeatures,
-    refreshFeatures,
     createFeature,
     voteForFeature,
     removeVote,
@@ -28,18 +27,6 @@ const FeatureList: React.FC = () => {
 
   const [showAddFeature, setShowAddFeature] = useState(false);
 
-  const handleRefresh = async () => {
-    await refreshFeatures();
-  };
-
-  const getFeatureIcon = (voteCount: number) => {
-    if (voteCount > 10) {
-      return <Flame className="w-4 h-4 text-orange-500" />;
-    } else if (voteCount > 5) {
-      return <Star className="w-4 h-4 text-yellow-500" />;
-    }
-    return null;
-  };
 
   if (isLoading && features.length === 0) {
     return (

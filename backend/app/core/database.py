@@ -6,7 +6,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://username:password@localhost/feature_voting_db")
+# Database Configuration
+# Current: SQLite for easy development and testing
+# Original: PostgreSQL - can be restored by setting DATABASE_URL environment variable
+# Example: DATABASE_URL=postgresql://user:password@localhost:5432/feature_voting_db
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./feature_voting.db")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

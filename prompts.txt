@@ -79,3 +79,10 @@ Create:
 - API documentation (endpoints, request/response examples)
 - Database schema diagram
 - Environment setup guide (.env configuration)
+
+The frontend UI seems to have been omitted in the initial project setup.
+Setup a project structure with:
+- /client folder for Frontend UI
+
+It should have similar functionality to the iOS app.
+You can use shadcn/ui to make it look good.

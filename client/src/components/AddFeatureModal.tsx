@@ -3,7 +3,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
-import { CreateFeatureRequest } from '../types';
+import type { CreateFeatureRequest } from '../types';
 
 interface AddFeatureModalProps {
   open: boolean;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Feature, CreateFeatureRequest, PaginatedResponse } from '../types';
+import type { Feature, CreateFeatureRequest, PaginatedResponse } from '../types';
 import { featureApi } from '../services/api';
 
 export const useFeatures = () => {
@@ -8,7 +8,6 @@ export const useFeatures = () => {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
   const [hasMore, setHasMore] = useState(false);
   const [votedFeatures, setVotedFeatures] = useState<Set<number>>(new Set());
   const [votingInProgress, setVotingInProgress] = useState<Set<number>>(new Set());
@@ -33,7 +32,6 @@ export const useFeatures = () => {
       }
 
       setCurrentPage(response.page);
-      setTotalPages(response.total_pages);
       setHasMore(response.has_next);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load features');
